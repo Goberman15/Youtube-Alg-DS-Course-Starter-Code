@@ -3,7 +3,22 @@
 // maxChar("I loveeeeeee noodles") === "e"
 // maxChar("1337") === "3"
 
-function maxChar(str) {}
+function maxChar(str) {
+  let charMap = {}
+
+  for (let char of str) {
+    if (charMap[char]) charMap[char]++
+    else charMap[char] = 1;
+  }
+
+  const max = Math.max(...Object.values(charMap));
+
+  for (let char in charMap) {
+    if (charMap[char] === max) return char;
+  }
+}
+
+console.log(maxChar("I loveeeeeee noodles"));
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
 // \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
