@@ -9,10 +9,21 @@
 //   anagrams('lol', 'lolc') --> False
 
 function anagrams(stringA, stringB) {
+  let wordMap = {};
   let str1 = stringA.toLowerCase().replace(/\W/, '');
   let str2 = stringB.toLowerCase().replace(/\W/, '');
 
-  
+  for (let char of str1) {
+    if (!wordMap[char]) wordMap[char] = 1;
+    else wordMap[char]++
+  }
+
+  for (let char of str2) {
+    if (wordMap[char]) wordMap[char]--;
+    else return false;
+  }
+
+  return true;
 }
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
