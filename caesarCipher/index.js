@@ -8,7 +8,28 @@
 // caeserCipher("abcd", 100) === "wxyz";
 // caeserCipher("gurer ner 9 qbtf!", 13) === "there are 9 dogs!"
 
-function caesarCipher(str, shift) {}
+function caesarCipher(str, shift) {
+  const trueShift = shift % 26;
+  const rgx = /\w/;
+
+  const newStr = str.split('').map((char, index) => {
+
+    if (rgx.test(char) && isNaN(char)) {
+      let asciiNum = str.charCodeAt(index) + trueShift;
+
+      if (asciiNum > 122) {
+        asciiNum -= 26;
+      }
+
+      return String.fromCharCode(asciiNum);
+
+    } else {
+      return char;
+    }
+  })
+
+  return newStr.join('');
+}
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
 // \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \

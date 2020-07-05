@@ -10,8 +10,10 @@
 
 function anagrams(stringA, stringB) {
   let wordMap = {};
-  let str1 = stringA.toLowerCase().replace(/\W/, '');
-  let str2 = stringB.toLowerCase().replace(/\W/, '');
+  let str1 = stringA.toLowerCase().replace(/\W/g, '');
+  let str2 = stringB.toLowerCase().replace(/\W/g, '');
+
+  if (str1.length !== str2.length) return false;
 
   for (let char of str1) {
     if (!wordMap[char]) wordMap[char] = 1;
