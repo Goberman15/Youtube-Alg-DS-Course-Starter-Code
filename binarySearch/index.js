@@ -2,7 +2,24 @@
 // for the provided value.
 // The Binary Search Algorithm will return the index of value found, or -1 if not found.
 
-const binarySearch = (sortedArr, value) => {};
+const binarySearch = (sortedArr, value) => {
+  let botPointer = 0;
+  let topPointer = sortedArr.length - 1;
+  
+  while (botPointer <= topPointer) {
+    
+    let midIndex = Math.floor((botPointer + topPointer) / 2);
+    
+    if (sortedArr[midIndex] === value) return midIndex;
+    
+    else if (sortedArr[midIndex] > value) topPointer = midIndex - 1;
+
+    else if (sortedArr[midIndex] < value) botPointer = midIndex + 1;
+
+  }
+
+  return -1;
+};
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
 // \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
